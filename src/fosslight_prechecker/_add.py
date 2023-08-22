@@ -229,7 +229,8 @@ def save_result_log():
 def copy_to_root(path_to_find, input_license):
     lic_file = f"{input_license}.txt"
     try:
-        source = os.path.join(path_to_find, 'LICENSES', f'{lic_file}')
+        source = f'{path_to_find}{os.sep}LICENSES{os.sep}{lic_file}'
+        #source = os.path.join(path_to_find, 'LICENSES', f'{lic_file}')
         destination = os.path.join(path_to_find, 'LICENSE')
         shutil.copyfile(source, destination)
     except Exception as ex:
