@@ -105,7 +105,7 @@ def get_loader():
     return loader
 
 
-_ENV = Environment(loader=get_loader(), trim_blocks=True)
+_ENV = Environment(loader=get_loader(), autoescape=jinja2.select_autoescape([]), trim_blocks=True)
 DEFAULT_TEMPLATE = _ENV.get_template("default_template.jinja2")
 
 
