@@ -229,7 +229,7 @@ def save_result_log():
 def copy_to_root(path_to_find, input_license):
     lic_file = f"{input_license}.txt"
     try:
-        lic_file = lic_file.replace(os.path.sep, '')
+        #lic_file = lic_file.replace(os.path.sep, '')
         source = os.path.abspath(os.path.join(path_to_find, 'LICENSES', lic_file))
         destination = os.path.join(path_to_find, 'LICENSE')
         shutil.copyfile(source, destination)
@@ -304,7 +304,7 @@ def find_representative_license(path_to_find, input_license):
     logger.info(f"\n - Representative license : {input_license}")
 
     parsed_args = main_parser.parse_args(['download', f"{input_license}"])
-
+    input_license = input_license.replace(os.path.sep, '')
     try:
         # 0: successfully downloaded, 1: failed to download
         reuse_return_code = reuse_download(parsed_args, prj)
