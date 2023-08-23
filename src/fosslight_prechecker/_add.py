@@ -229,6 +229,7 @@ def save_result_log():
 def copy_to_root(path_to_find, input_license):
     lic_file = f"{input_license}.txt"
     try:
+        lic_file = lic_file.replace(os.path.sep, '')
         if os.sep in lic_file:
             raise Exception('Invalid input license filename')
         path_to_find = os.path.abspath(path_to_find)
