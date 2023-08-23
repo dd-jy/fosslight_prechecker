@@ -230,13 +230,7 @@ def copy_to_root(path_to_find, input_license):
     lic_file = f"{input_license}.txt"
     try:
         lic_file = lic_file.replace(os.path.sep, '')
-        if os.sep in lic_file:
-            raise Exception('Invalid input license filename')
-        path_to_find = os.path.abspath(path_to_find)
-        #source = os.path.normpath(f'{path_to_find}{os.sep}LICENSES{os.sep}{lic_file}')
-        source = os.path.abspath(os.path.join(path_to_find, 'LICENSES', f'{lic_file}'))
-        if not source.startswith(path_to_find):
-            raise Exception('Invalid path')
+        source = os.path.abspath(os.path.join(path_to_find, 'LICENSES', lic_file))
         destination = os.path.join(path_to_find, 'LICENSE')
         shutil.copyfile(source, destination)
     except Exception as ex:
